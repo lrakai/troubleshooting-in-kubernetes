@@ -618,7 +618,7 @@ Resources:
             - cloudwatch:ListMetrics
             - cloudwatch:GetMetricStatistics
             - cloudwatch:Describe*
-            Resource: *
+            Resource: "*"
 
   # Bind the BastionRole to a profile for the VM instance.
   BastionInstanceProfile:
