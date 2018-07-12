@@ -1223,6 +1223,7 @@ Resources:
   # first boot in the startup script above.
   ApiLoadBalancer:
     Type: AWS::ElasticLoadBalancing::LoadBalancer
+    DependsOn: VPCGatewayAttachment
     Properties:
       Scheme: !Ref LoadBalancerType
       Listeners:
