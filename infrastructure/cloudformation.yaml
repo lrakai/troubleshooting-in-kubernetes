@@ -859,13 +859,13 @@ Resources:
       ServiceToken: !GetAtt GenKubeadmToken.Arn
 
   # This is a CloudWatch alarm https://aws.amazon.com/cloudwatch/
-  # If the master node is unresponsive for 5 minutes, AWS will attempt to recover it
+  # If the master node is unresponsive for 10 minutes, AWS will attempt to recover it
   # It will preserve the original IP, which is important for Kubernetes networking
   # Based on http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-cloudwatch.html#cloudwatch-sample-recover-instance
   RecoveryTestAlarm:
     Type: AWS::CloudWatch::Alarm
     Properties:
-      AlarmDescription: Trigger a recovery when instance status check fails for 5
+      AlarmDescription: Trigger a recovery when instance status check fails for 10
         consecutive minutes.
       Namespace: AWS/EC2
       MetricName: StatusCheckFailed_System
@@ -873,7 +873,7 @@ Resources:
       # 60-second periods (1 minute)
       Period: '60'
       # 5-minute check-ins
-      EvaluationPeriods: '5'
+      EvaluationPeriods: '10'
       ComparisonOperator: GreaterThanThreshold
       Threshold: '0'
       # This is the call that actually tries to recover the instance
