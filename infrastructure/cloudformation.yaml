@@ -1082,7 +1082,7 @@ Resources:
   # Allow the bastion host to talk to the cluster on port 6443
   ClusterSecGroupAllow6443FromLB:
     Metadata:
-      Comment: Open up port 6443 for load balancing the API server
+      Comment: Open up port 6443 for bastion to connect to the API server
     Type: AWS::EC2::SecurityGroupIngress
     Properties:
       GroupId: !Ref ClusterSecGroup
