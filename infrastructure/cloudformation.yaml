@@ -1325,6 +1325,45 @@ Resources:
     Properties:
       ServiceToken: !GetAtt CleanupClusterInfo.Arn
 
+  Group:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: Students
+      Path: "/"
+      Policies:
+      - PolicyName: students-policy
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action:
+            - ec2:Describe*
+            Resource: "*"
+            Condition:
+              StringEquals:
+                ec2:Region: us-west-2
+          - Effect: Allow
+            Action:
+            - elasticloadbalancing:DescribeLoadBalancers
+            Resource: "*"
+  User:
+    Type: AWS::IAM::User
+    Properties:
+      LoginProfile:
+        Password:
+          Fn::FindInMap:
+          - UserConfig
+          - Login
+          - Pass
+      Path: "/"
+      Groups:
+      - Students
+      UserName:
+        Fn::FindInMap:
+        - UserConfig
+        - Login
+        - Name
+
 # Outputs are what AWS will show you after stack creation
 # Generally they let you easily access some information about the stack
 # like what IP address is assigned to your master node
