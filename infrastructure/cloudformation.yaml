@@ -334,6 +334,10 @@ Parameters:
     AllowedValues: [ "internet-facing", "internal" ]
 
 Mappings:
+  UserConfig:
+    Login:
+      Name: student
+      Pass: password
   RegionMap:
     ap-northeast-1:
       '64': ami-891deff6
