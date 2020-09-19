@@ -535,7 +535,7 @@ Mappings:
     us-west-1:
       '64': ami-0ece97a717eed7f2d
     us-west-2:
-      '64': ami-0b2f3712718821f31
+      '64': ami-03a16ab0d2e6cbffe
     us-east-1:
       '64': ami-0d4f0ff8fb87a039c
 # Helper Conditions which help find the right values for resources
