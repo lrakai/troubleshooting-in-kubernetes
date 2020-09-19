@@ -19,6 +19,6 @@ echo v1.19.2 > /etc/kubernetes_community_ami_version
 apt-get -y install python-pip
 pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
 apt-get -y install ec2-instance-connect 
-pip install aws
+pip install awscli
 
 history -c
